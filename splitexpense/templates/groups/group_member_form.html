@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<h2>Add Group Member</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'main_table_detail' pk %}">Back to Group</a>
+{% endblock %}

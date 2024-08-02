@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ object.name }}</h2>
+<img src="{{ object.image }}" alt="{{ object.name }}">
+<p>Created at: {{ object.created_at }}</p>
+<p>Updated at: {{ object.updated_at }}</p>
+<a href="{% url 'group_member_create' object.pk %}">Add Member</a>
+<h3>Group Members</h3>
+<ul>
+    {% for member in object.group_members.all %}
+    <li>{{ member.user.username }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'main_table_update' object.pk %}">Edit Group</a>
+<a href="{% url 'main_table_delete' object.pk %}">Delete Group</a>
+<a href="{% url 'main_table_list' %}">Back to List</a>
+{% endblock %}

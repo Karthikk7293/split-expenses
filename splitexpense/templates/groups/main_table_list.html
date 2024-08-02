@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Groups</h2>
+<a href="{% url 'main_table_create' %}">Create New Group</a>
+<ul>
+    {% for group in object_list %}
+    <li>
+        <a href="{% url 'main_table_detail' group.pk %}">{{ group.name }}</a>
+        <a href="{% url 'main_table_update' group.pk %}">Edit</a>
+        <a href="{% url 'main_table_delete' group.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
