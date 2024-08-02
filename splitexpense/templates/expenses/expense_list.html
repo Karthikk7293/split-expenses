@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Expenses</h2>
+<a href="{% url 'expense_create' %}">Create New Expense</a>
+<ul>
+    {% for expense in object_list %}
+    <li>
+        <a href="{% url 'expense_detail' expense.pk %}">{{ expense.title }}</a>
+        <a href="{% url 'expense_update' expense.pk %}">Edit</a>
+        <a href="{% url 'expense_delete' expense.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

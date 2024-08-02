@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ object.title }}</h2>
+<img src="{{ object.image }}" alt="{{ object.title }}">
+<p>{{ object.description }}</p>
+<p>Created at: {{ object.created_at }}</p>
+<p>Updated at: {{ object.updated_at }}</p>
+<h3>Expense Members</h3>
+<ul>
+    {% for member in object.expense_members %}
+    <li>{{ member.id }} - {{ member.share }}</li>
+    {% endfor %}
+</ul>
+<h3>Paid By</h3>
+<ul>
+    {% for payer in object.paid_by %}
+    <li>{{ payer.id }} - {{ payer.share }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'expense_update' object.pk %}">Edit Expense</a>
+<a href="{% url 'expense_delete' object.pk %}">Delete Expense</a>
+<a href="{% url 'expense_list' %}">Back to List</a>
+{% endblock %}

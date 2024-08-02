@@ -25,4 +25,5 @@ urlpatterns = [
     path('home/',views.HomePage,name='home'),
     path('logout/',views.LogoutPage,name='logout'),
     path('groups/', include('groups.urls')),
+    path('expenses/', include('expenses.urls')),
 ]
